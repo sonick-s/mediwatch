@@ -9,9 +9,7 @@ Es una mini plataforma clínica diseñada para el monitoreo de signos vitales de
 - [02-Requisitos](#02-requisitos)
 - [03-Actores-roles-permisos](#03-actores-roles-permisos)
 - [04-Casos-de-Uso](#04-casos-de-uso)
-- [05-Arquitectura](#05-arquitectura)
-- [06-UML](#06-uml)
-- [07-Flujo-de-Alertas](#07-flujo-de-alertas)
+
 
 ## Objetivo
 El presente proyecto tiene como objetivo diseñar y desarrollar una plataforma de monitoreo clínico orientada a entornos de telemedicina, comprendiendo los estándares, requisitos técnicos y buenas prácticas necesarias para la implementación de un sistema seguro, escalable y alineado con normativas del sector salud, aplicando los estandares:
@@ -58,8 +56,24 @@ El alcance incluye la gestión de usuarios médicos y administrativos, la admini
 | Administrador del Sistema / IT | Usuario técnico responsable de la administración del sistema. | - Gestión de usuarios<br>- Configuración del sistema<br>- Auditoría técnica | - Crear usuarios<br>- Asignar roles<br>- Gestionar permisos<br>- Revisar logs<br>- Configurar parámetros del sistema | - No registra signos vitales<br>- No interviene en decisiones clínicas |
 
 ## 04-Casos-de-Uso
-![Diagrama](https://raw.githubusercontent.com/usuario/repositorio/main/docs/images/diagrama.png)
+CU-01 – Autenticarse en el Sistema
 
-## 05-Arquitectura
-## 06-UML
-## 07-Flujo-de-Alertas
+![Autenticarse en el Sistema](https://github.com/sonick-s/mediwatch/blob/main/docs/autentication.png)
+
+CU-02 – Registrar Paciente
+![Registro del Paciente](https://github.com/sonick-s/mediwatch/blob/main/docs/registro-patient.png)
+
+CU-03 – Editar Información del Paciente
+![Editar Información del Paciente](https://github.com/sonick-s/mediwatch/blob/main/docs/edit-patient.png)
+
+CU-04 – Registrar Signos Vitales
+![Registro de Signos Vitales](https://github.com/sonick-s/mediwatch/blob/main/docs/registo-signos-vitales.png)
+
+CU-05 – Consultar Historial Clínico
+![Consulta del Historial Clínico](https://github.com/sonick-s/mediwatch/blob/main/docs/historial-clinico.png)
+
+CU-06 – Visualizar Alertas
+![Visualizar Alertas](https://github.com/sonick-s/mediwatch/blob/main/docs/alerts.png)
+
+CU-07 – Supervisión Global
+![Supervisión Global](https://github.com/sonick-s/mediwatch/blob/main/docs/admin-general.png)
