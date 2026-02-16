@@ -57,7 +57,6 @@ El alcance incluye la gestión de usuarios médicos y administrativos, la admini
 
 ## 04-Casos-de-Uso
 CU-01 – Autenticarse en el Sistema
-
 ![Autenticarse en el Sistema](https://github.com/sonick-s/mediwatch/blob/main/docs/autentication.png)
 
 CU-02 – Registrar Paciente
@@ -67,7 +66,7 @@ CU-03 – Editar Información del Paciente
 ![Editar Información del Paciente](https://github.com/sonick-s/mediwatch/blob/main/docs/edit-patient.png)
 
 CU-04 – Registrar Signos Vitales
-![Registro de Signos Vitales](https://github.com/sonick-s/mediwatch/blob/main/docs/registo-signos-vitales.png)
+![Registro de Signos Vitales](https://github.com/sonick-s/mediwatch/blob/main/docs/registro-signos-vitales.png)
 
 CU-05 – Consultar Historial Clínico
 ![Consulta del Historial Clínico](https://github.com/sonick-s/mediwatch/blob/main/docs/historial-clinico.png)
