@@ -63,7 +63,36 @@ CU-01 – Autenticarse en el Sistema
 
 | Diagrama | Código |
 |----------|--------|
-| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/autentication.png" width="300"/> | ```plantuml\n\n\n``` |
+| <img src="..." width="300"/> | |
+
+```plantuml
+@startuml
+title CU-01 – Autenticarse en el Sistema (Diagrama de Actividad)
+
+start
+
+:Usuario ingresa correo y contraseña;
+
+:Sistema valida credenciales;
+
+if (¿Credenciales válidas?) then (Sí)
+    
+    if (¿Usuario activo?) then (Sí)
+        :Generar JWT;
+        :Redirigir al panel principal;
+        stop
+    else (No)
+        :Mostrar mensaje "Usuario inactivo";
+        stop
+    endif
+
+else (No)
+    :Mostrar mensaje "Credenciales inválidas";
+    stop
+endif
+
+@enduml
+```
 
 
 CU-02 – Registrar Paciente
