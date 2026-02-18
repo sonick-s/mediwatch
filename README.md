@@ -56,23 +56,53 @@ El alcance incluye la gestión de usuarios médicos y administrativos, la admini
 | Administrador del Sistema / IT | Usuario técnico responsable de la administración del sistema. | - Gestión de usuarios<br>- Configuración del sistema<br>- Auditoría técnica | - Crear usuarios<br>- Asignar roles<br>- Gestionar permisos<br>- Revisar logs<br>- Configurar parámetros del sistema | - No registra signos vitales<br>- No interviene en decisiones clínicas |
 
 ## 04-Casos-de-Uso
+
+ Casos de uso modelados en Plant Uml como Diagramas de Actividad (UML Activity Diagram)
+   
 CU-01 – Autenticarse en el Sistema
-![Autenticarse en el Sistema](https://github.com/sonick-s/mediwatch/blob/main/docs/autentication.png)
+
+| Diagrama | Código |
+|----------|--------|
+| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/autentication.png" width="300"/> | ```plantuml\n\n\n``` |
+
 
 CU-02 – Registrar Paciente
-![Registro del Paciente](https://github.com/sonick-s/mediwatch/blob/main/docs/registro-patient.png)
+
+| Diagrama | Código |
+|----------|--------|
+| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/registro-patient.png" width="300"/> | ```plantuml\n\n\n``` |
+
 
 CU-03 – Editar Información del Paciente
-![Editar Información del Paciente](https://github.com/sonick-s/mediwatch/blob/main/docs/edit-patient.png)
+
+| Diagrama | Código |
+|----------|--------|
+| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/edit-patient.png" width="300"/> | ```plantuml\n\n\n``` |
+
 
 CU-04 – Registrar Signos Vitales
-![Registro de Signos Vitales](https://github.com/sonick-s/mediwatch/blob/main/docs/registro-signos-vitales.png)
+
+| Diagrama | Código |
+|----------|--------|
+| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/registro-signos-vitales.png" width="300"/> | ```plantuml\n\n\n``` |
+
 
 CU-05 – Consultar Historial Clínico
-![Consulta del Historial Clínico](https://github.com/sonick-s/mediwatch/blob/main/docs/historial-clinico.png)
+
+| Diagrama | Código |
+|----------|--------|
+| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/historial-clinico.png" width="300"/> | ```plantuml\n\n\n``` |
+
 
 CU-06 – Visualizar Alertas
-![Visualizar Alertas](https://github.com/sonick-s/mediwatch/blob/main/docs/alerts.png)
+
+| Diagrama | Código |
+|----------|--------|
+| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/alerts.png" width="300"/> | ```plantuml\n\n\n``` |
+
 
 CU-07 – Supervisión Global
-![Supervisión Global](https://github.com/sonick-s/mediwatch/blob/main/docs/admin-general.png)
+
+| Diagrama | Código |
+|----------|--------|
+| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/admin-general.png" width="300"/> | ```plantuml\n\n\n``` |
