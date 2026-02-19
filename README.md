@@ -61,22 +61,15 @@ El alcance incluye la gestión de usuarios médicos y administrativos, la admini
    
 CU-01 – Autenticarse en el Sistema
 
-| Diagrama | Código |
-|----------|--------|
-| <img src="..." width="300"/> | |
+<img src="https://github.com/sonick-s/mediwatch/blob/main/docs/autentication.png" width="300"/>
 
 ```plantuml
 @startuml
 title CU-01 – Autenticarse en el Sistema (Diagrama de Actividad)
-
 start
-
 :Usuario ingresa correo y contraseña;
-
 :Sistema valida credenciales;
-
 if (¿Credenciales válidas?) then (Sí)
-    
     if (¿Usuario activo?) then (Sí)
         :Generar JWT;
         :Redirigir al panel principal;
@@ -85,53 +78,191 @@ if (¿Credenciales válidas?) then (Sí)
         :Mostrar mensaje "Usuario inactivo";
         stop
     endif
-
 else (No)
     :Mostrar mensaje "Credenciales inválidas";
     stop
 endif
-
 @enduml
 ```
 
 
 CU-02 – Registrar Paciente
 
-| Diagrama | Código |
-|----------|--------|
-| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/registro-patient.png" width="300"/> | ```plantuml\n\n\n``` |
+<img src="https://github.com/sonick-s/mediwatch/blob/main/docs/registro-patient.png" width="300"/>
+
+```plantuml
+@startuml
+title CU-02 – Registrar Paciente
+
+|Personal Administrativo / Recepción|
+start
+:Seleccionar "Nuevo Paciente";
+:Ingresar datos demográficos;
+:Validar campos;
+if (¿Datos completos?) then (No)
+  :Mostrar error E1\nDatos incompletos;
+  stop
+else (Sí)
+  if (¿Paciente duplicado?) then (Sí)
+    :Mostrar error E2\nPaciente duplicado;
+    stop
+  else (No)
+    :Guardar paciente;
+    if (¿Sincronizar Patient FHIR?) then (Sí)
+      :Sincronizar Patient FHIR;
+    endif
+    :Confirmar registro exitoso;
+    stop
+  endif
+endif
+@enduml
+```
 
 
 CU-03 – Editar Información del Paciente
 
-| Diagrama | Código |
-|----------|--------|
-| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/edit-patient.png" width="300"/> | ```plantuml\n\n\n``` |
+<img src="https://github.com/sonick-s/mediwatch/blob/main/docs/edit-patient.png" width="300"/>
+
+```plantuml
+@startuml
+title CU-03 – Editar Información del Paciente (Diagrama de Actividad)
+start
+:Usuario selecciona "Editar Paciente";
+:Usuario busca paciente por ID o nombre;
+:Mostrar formulario con datos actuales;
+:Usuario modifica campos necesarios;
+:Usuario guarda cambios;
+:Sistema valida cambios;
+if (¿Cambios válidos?) then (Sí)
+    :Actualizar paciente en base de datos;
+    :Mostrar mensaje "Paciente actualizado exitosamente";
+    stop
+else (No)
+    :Mostrar mensaje de error;
+    stop
+endif
+@enduml
+```
 
 
 CU-04 – Registrar Signos Vitales
 
-| Diagrama | Código |
-|----------|--------|
-| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/registro-signos-vitales.png" width="300"/> | ```plantuml\n\n\n``` |
+<img src="https://github.com/sonick-s/mediwatch/blob/main/docs/registro-signos-vitales.png" width="300"/> 
 
+```plantuml
+@startuml
+title CU-04 – Registrar Signos Vitales
+
+|Enfermera / Doctor Responsable|
+
+start
+:Seleccionar paciente;
+:Ingresar FC, SpO2, PAS/PAD;
+:Validar rangos fisiológicos;
+if (¿Valores válidos?) then (No)
+  :Mostrar error E1\nValores inválidos;
+  stop
+else (Sí)
+  :Guardar observación;
+  :Evaluar reglas clínicas;
+  if (¿Se requiere alerta?) then (Sí)
+    :Generar alerta clínica;
+  endif
+  :Sincronizar Observation FHIR;
+  :Confirmar registro exitoso;
+  stop
+endif
+@enduml
+```
 
 CU-05 – Consultar Historial Clínico
 
-| Diagrama | Código |
-|----------|--------|
-| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/historial-clinico.png" width="300"/> | ```plantuml\n\n\n``` |
+<img src="https://github.com/sonick-s/mediwatch/blob/main/docs/historial-clinico.png" width="300"/> 
 
+```plantuml
+@startuml
+title CU-05 – Consultar Historial Clínico
+
+|Enfermera / Doctor / Supervisor|
+
+start
+
+:Seleccionar paciente;
+:Solicitar historial clínico;
+
+|Sistema HomeVitals|
+:Recuperar observaciones del paciente;
+
+if (¿Historial disponible?) then (No)
+  :Mostrar mensaje\n"No hay registros disponibles";
+  stop
+else (Sí)
+  :Mostrar historial clínico;
+  stop
+endif
+@enduml
+```
 
 CU-06 – Visualizar Alertas
 
-| Diagrama | Código |
-|----------|--------|
-| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/alerts.png" width="300"/> | ```plantuml\n\n\n``` |
+<img src="https://github.com/sonick-s/mediwatch/blob/main/docs/alerts.png" width="300"/> 
 
+```plantuml
+@startuml
+title CU-06 – Visualizar Alertas
+
+|Doctor Responsable / Doctor Supervisor|
+
+start
+
+:Acceder al panel de alertas;
+
+|Sistema HomeVitals|
+:Recuperar alertas activas;
+
+if (¿Existen alertas activas?) then (No)
+  :Mostrar mensaje\n"No hay alertas activas";
+  stop
+else (Sí)
+  :Mostrar alertas activas;
+endif
+
+|Doctor Responsable / Doctor Supervisor|
+:Filtrar alertas;
+:Revisar estado de alerta;
+
+stop
+
+@enduml
+```
 
 CU-07 – Supervisión Global
 
-| Diagrama | Código |
-|----------|--------|
-| <img src="https://github.com/sonick-s/mediwatch/blob/main/docs/admin-general.png" width="300"/> | ```plantuml\n\n\n``` |
+<img src="https://github.com/sonick-s/mediwatch/blob/main/docs/admin-general.png" width="300"/> 
+
+```plantuml
+@startuml
+title CU-07 – Supervisión Global
+
+|Doctor Supervisor|
+
+start
+
+:Acceder al panel de supervisión;
+
+|Sistema HomeVitals|
+:Recuperar listado de pacientes;
+:Recuperar alertas activas;
+:Mostrar pacientes y alertas;
+
+|Doctor Supervisor|
+:Seleccionar paciente;
+
+|Sistema HomeVitals|
+:Recuperar observaciones del paciente;
+:Mostrar observaciones;
+
+stop
+
+@enduml
+```
